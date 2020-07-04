@@ -3,26 +3,26 @@ function submitForm(e) {
   e.preventDefault();
   const formData = new FormData(e.target);
 
-  if ((fullnameField.checkValidity())&&(emailField.checkValidity())&&(phoneField.checkValidity())) {
-    console.log('validno');
-
-    fetch('https://example.com/userid12345/data', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(result => {
-      alert('Спасибо! Ваши данные сейчас обновятся');
-    })
-    .catch(error => {
-      alert('Произошла неизвестная ошибка');
-    })
+  if ( !nameField.checkValidity() || !emailField.checkValidity() || !phoneField.checkValidity() ) {
+    return;
   }
+
+  fetch('https://example.com/userid12345/data', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(result => {
+    alert('Спасибо! Ваши данные сейчас обновятся');
+  })
+  .catch(error => {
+    alert('Произошла неизвестная ошибка');
+  })
 }
 
 
 function handlePaste (e) {
-    var clipboardData, pastedData;
+    let clipboardData, pastedData;
 
     e.stopPropagation();
     e.preventDefault();
@@ -30,10 +30,10 @@ function handlePaste (e) {
     clipboardData = e.clipboardData || window.clipboardData;
     pastedData = clipboardData.getData('Text');
 
-    var temporaryData = pastedData.trim();
+    const temporaryData = pastedData.trim();
 
     switch (e.target.id) {
-      case "fullnameField":
+      case "nameField":
         e.target.value = temporaryData.replace(/[^а-яА-Я]/g, '');
         break;
       case "emailField":
@@ -45,4 +45,6 @@ function handlePaste (e) {
     }
 }
 
-document.getElementById('myForm').addEventListener('paste', handlePaste);
+const myForm = document.getElementById('myForm');
+myForm.addEventListener('paste', handlePaste);
+myForm.addEventListener('submit', submitForm);
