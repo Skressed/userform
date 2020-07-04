@@ -45,6 +45,6 @@ function handlePaste (e) {
     }
 }
 
-const myForm = document.getElementById('myForm');
-myForm.addEventListener('paste', handlePaste);
-myForm.addEventListener('submit', submitForm);
+const userForm = document.getElementById('userForm');
+userForm.addEventListener('paste', handlePaste);
+userForm.addEventListener('submit', submitForm);
