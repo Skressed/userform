@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title></title>
+  </head>
+  <body>
+
+    <form id='myForm' onsubmit="submitForm(event)">
+      <input type='text' id='fullnameField' name='fullname' class="inputField" required pattern="[А-Я][а-я]+[ ][А-Я][а-я]+[ ][А-Я][а-я]+" />
+      <input type='email' id='emailField' name='email' class="inputField" required pattern="[a-z0-9]+[@]gmail[.]com"/>
+      <input type='tel' id='phoneField' name='phone' class="inputField" required pattern="[+]7[0-9]{10}|[8][0-9]{10}"/>
+      <button type='submit'>Отправить</button>
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
